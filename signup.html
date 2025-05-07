@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+</head>
+<body>
+  <h2>Sign Up</h2>
+  <form>
+    <label for="newusername">Username</label>
+    <input type="text" id="newusername" aria-label="Username"><br>
+
+    <label for="newpassword">Password</label>
+    <input type="password" id="newpassword" aria-label="Password"><br>
+
+    <button type="submit" aria-label="Sign up button">Sign Up</button>
+  </form>
+
+  <script>
+    window.onload = () => {
+      const msg = new SpeechSynthesisUtterance("You are on the signup page. Please enter a username and password.");
+      speechSynthesis.speak(msg);
+    };
+  </script>
+</body>
+</html>

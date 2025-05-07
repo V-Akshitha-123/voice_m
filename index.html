@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Accessible Website</title>
+</head>
+<body>
+  <h1>Welcome</h1>
+  <p id="infoText" aria-live="polite">
+    Voice instructions will be spoken shortly...
+  </p>
+
+  <!-- Accessible Buttons for mouse/touch users -->
+  <button id="loginBtn" aria-label="Login Button">Login</button>
+  <button id="signupBtn" aria-label="Signup Button">Sign Up</button>
+  <button id="helpBtn" aria-label="Help Button">Help</button>
+
+  <script>
+    function speak(text) {
+      const msg = new SpeechSynthesisUtterance(text);
+      msg.lang = 'en-US';
+      speechSynthesis.speak(msg);
+    }
+
+    // Voice guidance on page load
+    window.onload = () => {
+      speak("Welcome to the website. Press L to login, S to sign up, or H for help. You can also use the buttons.");
+    };
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      const key = e.key.toLowerCase();
+      if (key === 'l') {
+        speak("Redirecting to login page.");
+        window.location.href = "login.html";
+      } else if (key === 's') {
+        speak("Redirecting to signup page.");
+        window.location.href = "signup.html";
+      } else if (key === 'h') {
+        speak("This is a voice-assisted website. Use the keys L for login, S for signup, or H for help. You can also use the buttons.");
+      }
+    });
+
+    // Button click support
+    document.getElementById("loginBtn").onclick = () => {
+      speak("Redirecting to login page.");
+      window.location.href = "login.html";
+    };
+    document.getElementById("signupBtn").onclick = () => {
+      speak("Redirecting to signup page.");
+      window.location.href = "signup.html";
+    };
+    document.getElementById("helpBtn").onclick = () => {
+      speak("This is a voice-assisted website. Use the keys L for login, S for signup, or H for help. You can also use the buttons.");
+    };
+  </script>
+</body>
+</html>
